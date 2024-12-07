@@ -1,0 +1,18 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <h1>Наши проекты</h1>
+    <ul>
+        {% for project in projects %}
+            <li>
+                <h2>{{ project.title }}</h2>
+                <p>{{ project.description }}</p>
+                <p>Старт: {{ project.start_date }}</p>
+                <p>Окончание: {{ project.end_date }}</p>
+                {% if project.image %}
+                    <img src="{{ project.image.url }}" alt="{{ project.title }}" style="max-width: 1400px;">
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

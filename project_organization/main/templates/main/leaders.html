@@ -1,0 +1,17 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <h1>Руководители</h1>
+    <ul>
+        {% for leader in leaders %}
+            <li>
+                <h2>{{ leader.name }}</h2>
+                <p>{{ leader.position }}</p>
+                <p>{{ leader.bio }}</p>
+                {% if leader.image %}
+                    <img src="{{ leader.image.url }}" alt="{{ leader.name }}" style="max-width: 400px;">
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

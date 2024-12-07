@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <h1>Наши тарифы</h1>
+    <ul>
+        {% for tariff in tariffs %}
+            <li>
+                <h2>{{ tariff.name }}</h2>
+                <p>{{ tariff.description }}</p>
+                <p>Цена: {{ tariff.price }} руб.</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

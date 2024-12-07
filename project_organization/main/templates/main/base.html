@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Проектная организация</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff; /* Светло-синий фон */
+            color: #00008b; /* Темно-синий текст */
+        }
+        .navbar {
+            background-color: #00008b; /* Темно-синий фон навигационной панели */
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar a {
+            color: #ffffff; /* Белый текст навигационной панели */
+            text-decoration: none;
+            margin-right: 20px;
+        }
+        .content {
+            padding: 20px;
+        }
+        .auth-button {
+            margin-left: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div>
+            <a href="{% url 'home' %}">Главная</a>
+            <a href="{% url 'become_client' %}">Как стать нашим клиентом</a>
+            <a href="{% url 'consultation_queue' %}">Очередь на консультацию</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'profile' %}">Профиль</a>
+            {% endif %}
+        </div>
+        <div class="auth-button">
+            {% if user.is_authenticated %}
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Выйти</button>
+                </form>
+            {% else %}
+                <a href="{% url 'login' %}">Авторизация</a>
+                <a href="{% url 'register' %}">Регистрация</a>  
+            {% endif %}
+        </div>
+    </div>
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

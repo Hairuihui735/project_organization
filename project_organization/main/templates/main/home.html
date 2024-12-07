@@ -1,0 +1,11 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <h1>Добро пожаловать на сайт проектной организации!</h1>
+    <p>Выберите интересующий вас раздел:</p>
+    <ul>
+        <li><a href="{% url 'projects' %}">Наши проекты</a></li>
+        <li><a href="{% url 'tariffs' %}">Наши тарифы</a></li>
+        <li><a href="{% url 'leaders' %}">Руководители</a></li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <h1>{{ applicant.full_name }}</h1>
+    <p>Номер телефона: {{ applicant.phone_number }}</p>
+    <p>Дата подачи заявки: {{ applicant.application_date }}</p>
+    {% if applicant.photo %}
+        <img src="{{ applicant.photo.url }}" alt="{{ applicant.full_name }}" style="max-width: 200px;">
+    {% endif %}
+    <a href="{% url 'consultation_queue' %}">Вернуться к очереди</a>  
+{% endblock %}

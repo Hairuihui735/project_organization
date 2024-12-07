@@ -1,0 +1,13 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <h1>Очередь на консультацию</h1>
+    <ul>
+        {% for applicant in queue %}
+            <li>
+                <a href="{% url 'consultation_detail' applicant.id %}">{{ applicant.full_name }}</a>  
+            </li>
+        {% endfor %}
+    </ul>
+    <p>Количество человек в очереди: {{ queue_count }}</p>
+{% endblock %}
